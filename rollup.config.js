@@ -25,5 +25,23 @@ export default [
             typescript(),
             terser(),
         ],
+    },
+    {
+        input: "src/antd-utils/index.ts",
+        output: [
+            {
+                file: "lib/antd-utils.esm.js",
+                format: "esm",
+            },
+        ],
+        external: ['react', 'react-dom', 'antd'],
+        plugins: [
+            resolve(),
+            commonjs({
+                include: /node_modules/,
+            }),
+            typescript(),
+            terser(),
+        ],
     }
 ];

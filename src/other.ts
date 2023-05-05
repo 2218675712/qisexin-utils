@@ -7,10 +7,10 @@ import dayjs from 'dayjs'
  * @param options 可以传入字体大小，字体
  * @return 字符串实际像素
  */
-export function getActualWidthOfChars(text: string, options: {
+export const getActualWidthOfChars = (text: string, options: {
     size?: number,
     family?: string
-} = {}) {
+} = {}) => {
     const {size = 14, family = "Microsoft YaHei"} = options;
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d")!;
@@ -18,7 +18,7 @@ export function getActualWidthOfChars(text: string, options: {
     const metrics = ctx.measureText(text);
     const actual = Math.abs(metrics.actualBoundingBoxLeft) + Math.abs(metrics.actualBoundingBoxRight);
     return Math.max(metrics.width, actual);
-}
+};
 
 /**
  * @description 生成随机颜色
@@ -211,3 +211,9 @@ export const bytesConverter = (bytes: number, unit = 'GB') => {
     // eslint-disable-next-line no-restricted-properties
     return (bytes / Math.pow(1024, units.indexOf(unit.toUpperCase()))).toFixed(2);
 };
+/**
+ * 生成一个唯一的key
+ */
+export const getRandomKey = () => {
+    return Math.random().toString(36).substring(8);
+}

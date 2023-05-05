@@ -11,6 +11,7 @@
     "forceConsistentCasingInFileNames": true /* 禁止对同一个文件的不同引用，开着也行 */,
     "skipLibCheck": true, /* 不解析.d.ts类型文件 */
     "suppressImplicitAnyIndexErrors": true, // 镇压任意隐式的索引错误
+    "jsx": "react",// 支持jsx
   },
   "include": ["src"], /* 解析范围为src文件夹内 */
 }
