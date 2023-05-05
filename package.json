@@ -1,6 +1,6 @@
 {
-  "name": "qisexin-utils",
-  "version": "0.0.1",
+  "name": "@qisexin/utils-tool",
+  "version": "1.0.1",
   "description": "个人前端工具集合",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -17,9 +17,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/2218675712/w-utils.git"
-  },
-  "publishConfig": {
-    "registry": "https://www.npmjs.com/"
   },
   "homepage": "https://github.com/2218675712/w-utils",
   "keywords": [],
