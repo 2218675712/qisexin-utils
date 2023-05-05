@@ -1,0 +1,50 @@
+{
+  "name": "qisexin-utils",
+  "version": "0.0.1",
+  "description": "个人前端工具集合",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
+  "types": "./lib/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.esm.js"
+  },
+  "scripts": {
+    "clean": "rm -rf lib/*",
+    "build": "npx rollup@2 -c && npm run build:types",
+    "build:types": "npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2218675712/w-utils.git"
+  },
+  "publishConfig": {
+    "registry": "https://www.npmjs.com/"
+  },
+  "homepage": "https://github.com/2218675712/w-utils",
+  "keywords": [],
+  "author": "2218675712@qq.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-typescript": "^7.21.5",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@types/js-cookie": "^3.0.2",
+    "@types/lodash": "^4.14.179",
+    "@types/lodash-es": "^4.17.6",
+    "@types/qs": "^6.9.7",
+    "@types/react": "^18.0.28",
+    "rollup": "^2.68.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  },
+  "volta": {
+    "node": "16.19.1"
+  }
+}

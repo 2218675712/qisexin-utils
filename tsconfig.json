@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es5" /* 代码编译成es5，这样兼容性更好 */,
+    "module": "es6" /* 表明我们的代码使用es6以后的格式写的 */,
+    "declaration": true /* 我们要生成.d.ts那种类型提示文件 */,
+    "moduleResolution":"node",
+    "emitDeclarationOnly": true /* 处理js代码，但是只输出类型提示文件，不输出js文件 */,
+    "outDir": "./lib" /* 处理后的文件输出目录 */,
+    "strict": true /* 开启严格模式进行编译 */,
+    "esModuleInterop": true /* 兼容esm和cjs两种导入规则，一定要设置为true */,
+    "forceConsistentCasingInFileNames": true /* 禁止对同一个文件的不同引用，开着也行 */,
+    "skipLibCheck": true, /* 不解析.d.ts类型文件 */
+    "suppressImplicitAnyIndexErrors": true, // 镇压任意隐式的索引错误
+  },
+  "include": ["src"], /* 解析范围为src文件夹内 */
+}
