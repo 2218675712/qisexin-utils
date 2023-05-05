@@ -2,6 +2,7 @@
 
 将工作中常用的一些方法封装成一个个小函数，方便以后使用
 
+npm地址：https://www.npmjs.com/package/@qisexin/utils-tool
 ## ⚠️注意: 使用antd-utils时，需要在项目中安装 'react', 'react-dom', 'antd'
 
 使用说明
