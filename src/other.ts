@@ -24,6 +24,7 @@ export const getActualWidthOfChars = (text: string, options: {
 /**
  * @description 生成随机颜色
  * @returns array<string> 随机color数组
+ * @example generateRandomColor() => ['rgb(48, 62, 6)',...]
  */
 export const generateRandomColor = (): string[] => {
     const limit = 80;
@@ -36,6 +37,7 @@ export const generateRandomColor = (): string[] => {
 /**
  * 获取url参数
  * @param name 参数名
+ * @example getQueryString('p_from') => 'xxx'
  */
 export const getQueryString = (name: string): string | null => {
     const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
@@ -47,6 +49,7 @@ export const getQueryString = (name: string): string | null => {
 /**
  * 复制到剪贴板 支持http请求
  * @param text
+ * @example copyToClipboard('http://www.baidu.com')
  */
 const copyToClipboard = (text: string) => {
     const textarea = document.createElement("textarea");
@@ -56,12 +59,20 @@ const copyToClipboard = (text: string) => {
     document.execCommand("copy");
     document.body.removeChild(textarea);
 };
-// 编码字符串
+/**
+ * 编码字符串
+ * @param val 编码字符串
+ * @example encodeValue('test?') => 'test%3F'
+ */
 export const encodeValue = (val: string) => {
     if (!val) return val;
     return encodeURIComponent(val);
 };
-// 解码字符串
+/**
+ * 解码字符串
+ * @param val 解码字符串
+ * @example decodeValue('test%3F') => 'test?'
+ */
 const decodeValue = (val: string) => {
     try {
         if (!val) return val;
@@ -70,7 +81,11 @@ const decodeValue = (val: string) => {
         return val;
     }
 };
-// 转义对象中的特殊字符 例: / => %2F
+/**
+ * 转义对象中的特殊字符 例: / => %2F
+ * @param obj
+ * @example encodeObject({cpu: 'intel i7',gpu:'rtx 4090'}) => {cpu: 'intel%20i7',gpu:'rtx%204090'}
+ */
 export const encodeObject = (obj: {}) => {
     if (!isObject(obj)) {
         return obj;
@@ -81,7 +96,11 @@ export const encodeObject = (obj: {}) => {
     }, {});
 };
 
-// 解码对象中的特殊字符
+/**
+ * 解码对象中的特殊字符
+ * @param obj
+ * @example decodeObject({cpu: 'intel%20i7',gpu:'rtx%204090'}) => {cpu: 'intel i7',gpu:'rtx 4090'}
+ */
 const decodeObject = (obj: {}) => {
     if (!isObject(obj)) {
         return obj;
@@ -91,7 +110,11 @@ const decodeObject = (obj: {}) => {
         return acc;
     }, {});
 };
-// 转义对象中含有正则中的特殊字符
+/**
+ * 转义对象中含有正则中的特殊字符
+ * @param obj
+ * @example escapeRegExpObject({a:'[lodash]'}) => {a:'\[lodash\]'}
+ */
 const escapeRegExpObject = (obj: {}) => {
     if (!isObject(obj)) {
         return obj;
