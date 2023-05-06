@@ -215,5 +215,5 @@ export const bytesConverter = (bytes: number, unit = 'GB') => {
  * 生成一个唯一的key
  */
 export const getRandomKey = () => {
-    return Math.random().toString(36).substring(8);
+    return Math.random().toString(36).substring(2);
 }
