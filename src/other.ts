@@ -127,6 +127,7 @@ const escapeRegExpObject = (obj: {}) => {
 /**
  * 检查日期格式，没有时分秒补充 23:59:59
  * @param dateString
+ * @example checkAndCompleteDate('2020-01-01') => '2020-01-01 23:59:59'
  */
 const checkAndCompleteDate = (dateString: string) => {
     const date = dayjs(dateString, ['YYYY-MM-DD', 'YYYY-MM-DD HH:mm:ss']);
@@ -147,6 +148,7 @@ const checkAndCompleteDate = (dateString: string) => {
  * 转换为带连字符的uuid字符串
  * @param uuidStr uuid字符串
  * @returns {*|string}
+ * @example formatUUID('e4b9e0e0e0e0e0e0e0e0e0e0e0e0e0e0') => 'e4b9e0e0-e0e0-e0e0-e0e0-e0e0e0e0e0e0'
  */
 export const formatUUID = (uuidStr: string) => {
     // 定义匹配不带连字符的 UUID 的正则表达式
@@ -161,6 +163,7 @@ export const formatUUID = (uuidStr: string) => {
 /**
  * 跳转锚点
  * @param anchorName id名称
+ * @example scrollToAnchor('anchorName')
  */
 export const scrollToAnchor = (anchorName: string) => {
     if (anchorName) {
@@ -172,7 +175,13 @@ export const scrollToAnchor = (anchorName: string) => {
         }
     }
 };
-// 中英文数字混合排序
+/**
+ * 中英文数字混合排序
+ * @param _a
+ * @param _b
+ * 排序顺序 数字>字母>中文拼音
+ * @example mixedSort('1','2') => -1
+ */
 export const mixedSort = (_a: string | number, _b: string | number) => {
     const reg = /[a-zA-Z0-9]/;
     if (_a === undefined || _b === undefined) {
@@ -195,14 +204,22 @@ export const mixedSort = (_a: string | number, _b: string | number) => {
     }
 };
 
-// 特殊数字转换(NaN/Infinity => 0)
+/**
+ * 特殊数字转换(NaN/Infinity => 0)
+ * @param num
+ * @example convertSpecialNumbers(NaN) => 0
+ */
 export const convertSpecialNumbers = (num: number) => {
     if (num.toString() === 'NaN' || num.toString() === 'Infinity') {
         return 0
     }
     return num
 }
-// 处理空数字 0显示0 null undefined显示--
+/**
+ * 空数字转换 0显示0 null undefined显示--
+ * @param num
+ * @example convertEmptyNumber(null) => '--'
+ */
 export const convertEmptyNumber = (num: number) => {
     if (num === 0) return 0;
     if (num === null || num === undefined) {
@@ -215,6 +232,7 @@ export const convertEmptyNumber = (num: number) => {
  * @param obj 对象或数组
  * @param keysMap 格式{ gender: 'sex' }
  * @returns {{}|*}
+ * @example replaceKeys({'a':123},{a:'b'}) => {b:123}
  */
 export const replaceKeys = (obj: any, keysMap: Record<string, string>): any => {
     if (Array.isArray(obj)) {
@@ -228,7 +246,12 @@ export const replaceKeys = (obj: any, keysMap: Record<string, string>): any => {
     }
 };
 
-// 字节转其他单位
+/**
+ * 字节转其他单位
+ * @param bytes 字节数
+ * @param unit 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'
+ * @example bytesConverter(4*1024*1024,'MB') => 4
+ */
 export const bytesConverter = (bytes: number, unit = 'GB') => {
     if (!bytes && bytes !== 0) return undefined
     const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
@@ -236,7 +259,8 @@ export const bytesConverter = (bytes: number, unit = 'GB') => {
     return (bytes / Math.pow(1024, units.indexOf(unit.toUpperCase()))).toFixed(2);
 };
 /**
- * 生成一个唯一的key
+ * 生成一个随机的key
+ * @example getRandomKey() => '91n6kikc3jw'
  */
 export const getRandomKey = () => {
     return Math.random().toString(36).substring(2);

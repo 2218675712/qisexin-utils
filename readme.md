@@ -46,6 +46,15 @@ import { getColumnSearchProps } from '@qisexin/utils-tool/antd-utils';
 - encodeObject 转义对象中的特殊字符
 - decodeObject 解码对象中的特殊字符
 - escapeRegExpObject 转义对象中含有正则中的特殊字符
+- checkAndCompleteDate 检查日期格式，没有时分秒补充 23:59:59
+- formatUUID 转换为带连字符的uuid字符串
+- scrollToAnchor 跳转锚点
+- mixedSort 中英文数字混合排序
+- convertSpecialNumbers 特殊数字转换(NaN/Infinity => 0)
+- convertEmptyNumber 空数字转换 0显示0 null undefined显示--
+- replaceKeys 修改对象/数组的 键和值
+- bytesConverter 字节转其他单位
+- getRandomKey 生成一个随机的key
 
 ###  toThousands 数字转换为千位分隔符形式
 ```js
@@ -129,5 +138,87 @@ import { getColumnSearchProps } from '@qisexin/utils-tool/antd-utils';
  * 转义对象中含有正则中的特殊字符
  * @param obj
  * @example escapeRegExpObject({a:'[lodash]'}) => {a:'\[lodash\]'}
+ */
+```
+### checkAndCompleteDate 检查日期格式，没有时分秒补充 23:59:59
+```js
+/**
+ * 检查日期格式，没有时分秒补充 23:59:59
+ * @param dateString
+ * @example checkAndCompleteDate('2020-01-01') => '2020-01-01 23:59:59'
+ */
+```
+### formatUUID 转换为带连字符的uuid字符串
+```js
+/**
+ * 转换为带连字符的uuid字符串
+ * @param uuidStr uuid字符串
+ * @returns {*|string}
+ * @example formatUUID('e4b9e0e0e0e0e0e0e0e0e0e0e0e0e0e0') => 'e4b9e0e0-e0e0-e0e0-e0e0-e0e0e0e0e0e0'
+ */
+```
+### scrollToAnchor 跳转锚点
+```js
+/**
+ * 跳转锚点
+ * @param anchorName id名称
+ * @example scrollToAnchor('anchorName')
+ */
+```
+### mixedSort 中英文数字混合排序
+```js
+/**
+ * 中英文数字混合排序
+ * @param _a
+ * @param _b
+ * 排序顺序 数字>字母>中文拼音
+ * @example mixedSort('1','2') => -1
+ */
+```
+
+### convertSpecialNumbers 特殊数字转换(NaN/Infinity => 0)
+```js
+/**
+ * 特殊数字转换(NaN/Infinity => 0)
+ * @param num
+ * @example convertSpecialNumbers(NaN) => 0
+ */
+```
+
+### convertEmptyNumber 空数字转换 0显示0 null undefined显示--
+```js
+/**
+ * 空数字转换 0显示0 null undefined显示--
+ * @param num
+ * @example convertEmptyNumber(null) => '--'
+ */
+```
+
+### replaceKeys 修改对象/数组的 键和值
+```js
+/**
+ * 修改对象/数组的 键和值
+ * @param obj 对象或数组
+ * @param keysMap 格式{ gender: 'sex' }
+ * @returns {{}|*}
+ * @example replaceKeys({'a':123},{a:'b'}) => {b:123}
+ */
+```
+
+### bytesConverter 字节转其他单位
+```js
+/**
+ * 字节转其他单位
+ * @param bytes 字节数
+ * @param unit 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'
+ * @example bytesConverter(4*1024*1024,'MB') => 4
+ */
+```
+
+### getRandomKey 生成一个随机的key
+```js
+/**
+ * 生成一个随机的key
+ * @example getRandomKey() => '91n6kikc3jw'
  */
 ```
