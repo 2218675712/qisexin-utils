@@ -22,19 +22,7 @@ import { toThousands } from '@qisexin/utils-tool';
 
 
 
-## ⚠️注意: 使用antd-utils时，需要在项目中安装 'react', 'react-dom', 'antd'并从@qisexin/utils-tool/antd-utils内引入方法
 
-```tsx
-import { getColumnSearchProps } from '@qisexin/utils-tool/antd-utils';
-//antd table columns配置
-[{
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    width: '30%',
-    ...getColumnSearchProps('name'),
-}]
-```
 ## 方法说明
 - toThousands 数字转换为千位分隔符形式
 - getActualWidthOfChars 通过canvas获取字符的实际宽度
@@ -221,4 +209,32 @@ import { getColumnSearchProps } from '@qisexin/utils-tool/antd-utils';
  * 生成一个随机的key
  * @example getRandomKey() => '91n6kikc3jw'
  */
+```
+
+
+## antd相关工具使用方法
+
+> ⚠️注意: 使用antd-utils时，需要在项目中安装 'react', 'react-dom', 'antd'并从@qisexin/utils-tool/antd-utils内引入方法
+
+- CopyToClipboard 复制到剪贴板
+- downloadXlsxPro 前端下载xlsx
+- getColumnSearchProps antd table 加入本地搜索
+### CopyToClipboard 复制到剪贴板
+
+```tsx
+import { CopyToClipboard } from "'@qisexin/utils-tool/antd-utils";
+<CopyToClipboard copyText={'复制内容'}>点我复制</CopyToClipboard>
+```
+### downloadXlsxPro 前端下载xlsx  [参考地址](src/antd-utils/downloadXlsxPro.md)
+### getColumnSearchProps antd table 加入本地搜索
+```tsx
+import { getColumnSearchProps } from '@qisexin/utils-tool/antd-utils';
+//antd table columns配置
+[{
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    width: '30%',
+    ...getColumnSearchProps('name'),
+}]
 ```

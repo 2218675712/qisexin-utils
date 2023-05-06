@@ -3,6 +3,10 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space } from 'antd';
 import type { FilterDropdownProps } from 'antd/lib/table/interface';
 
+/**
+ * antd table 加入本地搜索
+ * @param dataIndex 索引
+ */
 export const getColumnSearchProps = (dataIndex: string) => ({
     filterIcon: (filtered: boolean) => (
         <SearchOutlined style={{color: filtered ? '#1890ff' : undefined}}/>

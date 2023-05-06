@@ -1,3 +1,3 @@
 export * from './CopyToClipboard'
-export * from './downloadSnapshotExcel'
+export * from './downloadXlsxPro'
 export * from './getColumnSearchProps'

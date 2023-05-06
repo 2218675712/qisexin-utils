@@ -51,7 +51,7 @@ export const getQueryString = (name: string): string | null => {
  * @param text
  * @example copyToClipboard('http://www.baidu.com')
  */
-const copyToClipboard = (text: string) => {
+export const copyToClipboard = (text: string) => {
     const textarea = document.createElement("textarea");
     textarea.textContent = text;
     document.body.appendChild(textarea);
@@ -73,7 +73,7 @@ export const encodeValue = (val: string) => {
  * @param val 解码字符串
  * @example decodeValue('test%3F') => 'test?'
  */
-const decodeValue = (val: string) => {
+export const decodeValue = (val: string) => {
     try {
         if (!val) return val;
         return decodeURIComponent(val);
@@ -101,7 +101,7 @@ export const encodeObject = (obj: {}) => {
  * @param obj
  * @example decodeObject({cpu: 'intel%20i7',gpu:'rtx%204090'}) => {cpu: 'intel i7',gpu:'rtx 4090'}
  */
-const decodeObject = (obj: {}) => {
+export const decodeObject = (obj: {}) => {
     if (!isObject(obj)) {
         return obj;
     }
@@ -115,7 +115,7 @@ const decodeObject = (obj: {}) => {
  * @param obj
  * @example escapeRegExpObject({a:'[lodash]'}) => {a:'\[lodash\]'}
  */
-const escapeRegExpObject = (obj: {}) => {
+export const escapeRegExpObject = (obj: {}) => {
     if (!isObject(obj)) {
         return obj;
     }
@@ -129,7 +129,7 @@ const escapeRegExpObject = (obj: {}) => {
  * @param dateString
  * @example checkAndCompleteDate('2020-01-01') => '2020-01-01 23:59:59'
  */
-const checkAndCompleteDate = (dateString: string) => {
+export const checkAndCompleteDate = (dateString: string) => {
     const date = dayjs(dateString, ['YYYY-MM-DD', 'YYYY-MM-DD HH:mm:ss']);
     if (date.isValid()) {
         if (/\d{2}:\d{2}:\d{2}/.test(dateString)) {

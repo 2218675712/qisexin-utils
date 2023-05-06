@@ -1,15 +1,13 @@
 import { message } from "antd";
 import React from "react";
 import type { ReactNode } from "react";
+import {copyToClipboard} from '../other'
 
-const copyToClipboard = (text: string) => {
-    const textarea = document.createElement("textarea");
-    textarea.textContent = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
-};
+/**
+ * 复制到剪切板
+ * @param props
+ * @constructor
+ */
 const CopyToClipboard = (props: { copyText: string; children: ReactNode, cssStyle?: object }) => {
     const {copyText, cssStyle = {}} = props;
     const handleClick = () => {
