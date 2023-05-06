@@ -6,11 +6,12 @@ import dayjs from 'dayjs'
  * @param text 传入的字符串
  * @param options 可以传入字体大小，字体
  * @return 字符串实际像素
+ * @example getActualWidthOfChars('性能数据')=>48
  */
 export const getActualWidthOfChars = (text: string, options: {
     size?: number,
     family?: string
-} = {}) => {
+} = {}):number => {
     const {size = 14, family = "Microsoft YaHei"} = options;
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d")!;
