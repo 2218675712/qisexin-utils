@@ -132,7 +132,7 @@ export const escapeRegExpObject = (obj: {}) => {
 export const checkAndCompleteDate = (dateString: string) => {
     const date = dayjs(dateString, ['YYYY-MM-DD', 'YYYY-MM-DD HH:mm:ss']);
     if (date.isValid()) {
-        if (/\d{2}:\d{2}:\d{2}/.test(dateString)) {
+        if (/([01]\d|2[0-4]):([0-5]\d|60):([0-5]\d|60)/.test(dateString)) {
             // 如果日期格式正确，则直接返回该日期
             return dayjs(dateString).format('YYYY-MM-DD HH:mm:ss');
         } else {
@@ -265,3 +265,39 @@ export const bytesConverter = (bytes: number, unit = 'GB') => {
 export const getRandomKey = () => {
     return Math.random().toString(36).substring(2);
 }
+
+/**
+ * 将 URL 参数转换为对象
+ * @param url URL 字符串
+ * @returns 包含 URL 参数的对象
+ * @example urlParamsToObject('https://www.baidu.com?a=1&b=2') => {a: '1', b: '2'}
+ */
+export const urlParamsToObject = (url: string): { [key: string]: string } => {
+    const urlParams = new URLSearchParams(url.split("?")[1]);
+    const params: { [key: string]: string } = {};
+
+    // 遍历 URL 参数并将其添加到对象中
+    // @ts-ignore
+    for (const [key, value] of urlParams.entries()) {
+        params[key] = value;
+    }
+
+    return params;
+};
+
+/**
+ * 将对象转换为 URL 参数
+ * @param params 包含参数的对象
+ * @returns URL 参数字符串
+ * @example objectToUrlParams({a: '1', b: '2'}) => 'a=1&b=2'
+ */
+export const objectToUrlParams = (params: { [key: string]: string }): string => {
+    const urlParams = new URLSearchParams();
+
+    // 遍历对象并将其添加到 URLSearchParams 中
+    for (const [key, value] of Object.entries(params)) {
+        urlParams.append(key, value);
+    }
+
+    return urlParams.toString();
+};

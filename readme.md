@@ -43,6 +43,8 @@ import { toThousands } from '@qisexin/utils-tool';
 - replaceKeys 修改对象/数组的 键和值
 - bytesConverter 字节转其他单位
 - getRandomKey 生成一个随机的key
+- urlParamsToObject 将 URL 参数转换为对象
+- objectToUrlParams 将对象转换为 URL 参数
 
 ###  toThousands 数字转换为千位分隔符形式
 ```js
@@ -203,11 +205,22 @@ import { toThousands } from '@qisexin/utils-tool';
  */
 ```
 
-### getRandomKey 生成一个随机的key
+### urlParamsToObject 将 URL 参数转换为对象
 ```js
 /**
- * 生成一个随机的key
- * @example getRandomKey() => '91n6kikc3jw'
+ * 将 URL 参数转换为对象
+ * @param url URL 字符串
+ * @returns 包含 URL 参数的对象
+ * @example urlParamsToObject('https://www.baidu.com?a=1&b=2') => {a: '1', b: '2'}
+ */
+```
+### objectToUrlParams 将对象转换为 URL 参数
+```js
+/**
+ * 将对象转换为 URL 参数
+ * @param params 包含参数的对象
+ * @returns URL 参数字符串
+ * @example objectToUrlParams({a: '1', b: '2'}) => 'a=1&b=2'
  */
 ```
 
