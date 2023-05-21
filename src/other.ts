@@ -132,7 +132,7 @@ export const escapeRegExpObject = (obj: {}) => {
 export const checkAndCompleteDate = (dateString: string) => {
     const date = dayjs(dateString, ['YYYY-MM-DD', 'YYYY-MM-DD HH:mm:ss']);
     if (date.isValid()) {
-        if (/([01]\d|2[0-4]):([0-5]\d|60):([0-5]\d|60)/.test(dateString)) {
+        if (/([01]\d|2[0-3]):([0-5]\d|60):([0-5]\d|60)/.test(dateString)) {
             // 如果日期格式正确，则直接返回该日期
             return dayjs(dateString).format('YYYY-MM-DD HH:mm:ss');
         } else {
