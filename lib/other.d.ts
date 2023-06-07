@@ -116,3 +116,21 @@ export declare const bytesConverter: (bytes: number, unit?: string) => string | 
  * @example getRandomKey() => '91n6kikc3jw'
  */
 export declare const getRandomKey: () => string;
+/**
+ * 将 URL 参数转换为对象
+ * @param url URL 字符串
+ * @returns 包含 URL 参数的对象
+ * @example urlParamsToObject('https://www.baidu.com?a=1&b=2') => {a: '1', b: '2'}
+ */
+export declare const urlParamsToObject: (url: string) => {
+    [key: string]: string;
+};
+/**
+ * 将对象转换为 URL 参数
+ * @param params 包含参数的对象
+ * @returns URL 参数字符串
+ * @example objectToUrlParams({a: '1', b: '2'}) => 'a=1&b=2'
+ */
+export declare const objectToUrlParams: (params: {
+    [key: string]: string;
+}) => string;
