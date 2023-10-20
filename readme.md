@@ -264,3 +264,6 @@ import { getColumnSearchProps } from '@qisexin/utils-tool/antd-utils';
     ...getColumnSearchProps('name'),
 }]
 ```
+
+## 自定义hooks相关
+- useLocalStorageState 将状态存储在 localStorage 中的 Hook ,支持跨标签页通信
