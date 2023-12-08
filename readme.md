@@ -45,6 +45,7 @@ import { toThousands } from '@qisexin/utils-tool';
 - getRandomKey 生成一个随机的key
 - urlParamsToObject 将 URL 参数转换为对象
 - objectToUrlParams 将对象转换为 URL 参数
+- largeDataTooltipOptimization Echarts Tooltip的大量数据下formatter格式化
 
 ###  toThousands 数字转换为千位分隔符形式
 ```js
@@ -224,6 +225,18 @@ import { toThousands } from '@qisexin/utils-tool';
  */
 ```
 
+### largeDataTooltipOptimization Echarts Tooltip的大量数据下formatter格式化
+```js
+/**
+ * Echarts Tooltip的大量数据下formatter格式化
+ * @param params params
+ * @param labelField label字段
+ * @param rowsPerColumn 每列显示的行数
+ * @param defaultColumnWidth 默认列宽
+ * @return html标签字符串
+ * @example formatter: (params) => largeDataTooltipOptimization(params, 'device', 10, 200)
+ */
+```
 
 ## antd相关工具使用方法
 
@@ -251,3 +264,6 @@ import { getColumnSearchProps } from '@qisexin/utils-tool/antd-utils';
     ...getColumnSearchProps('name'),
 }]
 ```
+
+## 自定义hooks相关
+- useLocalStorageState 将状态存储在 localStorage 中的 Hook ,支持跨标签页通信

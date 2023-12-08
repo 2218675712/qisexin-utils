@@ -1,0 +1,1 @@
+export declare const useLocalStorageState: <T>(key: string, options?: import("./hooks/useLocalStorageState/createUseStorageState").Options<T>) => readonly [T | undefined, (value?: import("./hooks/useLocalStorageState/createUseStorageState").SetState<T> | undefined) => void];
