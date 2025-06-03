@@ -5,95 +5,95 @@
 [![license](https://img.shields.io/npm/l/@qisexin/utils-tool.svg)](https://github.com/2218675712/qisexin-utils/blob/main/LICENSE.txt)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 
-> 个人前端工具库，将工作中常用的方法封装成小函数，持续丰富中
+> Personal frontend utility library that encapsulates commonly used methods from work into small functions, continuously enriching
 
-## 📖 目录
+## 📖 Table of Contents
 
-- [安装](#安装)
-- [快速开始](#快速开始)
-- [项目特点](#项目特点)
-- [API 文档](#api-文档)
-  - [字符串处理](#字符串处理)
-  - [数字处理](#数字处理)
-  - [对象处理](#对象处理)
-  - [日期时间](#日期时间)
-  - [DOM 操作](#dom-操作)
-  - [URL 处理](#url-处理)
-  - [工具函数](#工具函数)
-  - [Echarts 工具](#echarts-工具)
-- [Antd 相关工具](#antd-相关工具)
-- [自定义 Hooks](#自定义-hooks)
-- [贡献指南](#贡献指南)
-- [许可证](#许可证)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Features](#features)
+- [API Documentation](#api-documentation)
+  - [String Processing](#string-processing)
+  - [Number Processing](#number-processing)
+  - [Object Processing](#object-processing)
+  - [Date & Time](#date--time)
+  - [DOM Operations](#dom-operations)
+  - [URL Processing](#url-processing)
+  - [Utility Functions](#utility-functions)
+  - [Echarts Tools](#echarts-tools)
+- [Antd Related Tools](#antd-related-tools)
+- [Custom Hooks](#custom-hooks)
+- [Contributing](#contributing)
+- [License](#license)
 
-## 🚀 安装
+## 🚀 Installation
 
 ```bash
 npm install @qisexin/utils-tool
 ```
 
-## 📦 快速开始
+## 📦 Quick Start
 
 ```javascript
-// ES6 模块导入
+// ES6 module import
 import { toThousands, getQueryString } from '@qisexin/utils-tool';
 
-// 使用示例
+// Usage examples
 const formattedNumber = toThousands(1234567.89); // "1,234,567.89"
-const urlParam = getQueryString('id'); // 获取URL参数
+const urlParam = getQueryString('id'); // Get URL parameter
 ```
 
-## ✨ 项目特点
+## ✨ Features
 
-- ✅ **TypeScript 支持** - 使用 TypeScript 编写，提供完整的类型定义文件
-- ✅ **多格式支持** - 使用 Rollup 打包，提供 ESM、CJS 两种格式
-- ✅ **按需引入** - 支持多入口打包，减轻打包体积
-- ✅ **零依赖** - 核心工具函数无外部依赖
-- ✅ **全面测试** - 完整的单元测试覆盖
+- ✅ **TypeScript Support** - Written in TypeScript with complete type definition files
+- ✅ **Multiple Format Support** - Bundled with Rollup, providing ESM and CJS formats
+- ✅ **Tree Shaking** - Supports multi-entry bundling to reduce bundle size
+- ✅ **Zero Dependencies** - Core utility functions have no external dependencies
+- ✅ **Comprehensive Testing** - Complete unit test coverage
 
-## 📚 API 文档
+## 📚 API Documentation
 
-### 字符串处理
+### String Processing
 
 #### `encodeValue(val: string): string`
-编码字符串中的特殊字符
+Encode special characters in strings
 
 ```javascript
 encodeValue('test?') // => 'test%3F'
 ```
 
 #### `decodeValue(val: string): string`
-解码字符串中的特殊字符
+Decode special characters in strings
 
 ```javascript
 decodeValue('test%3F') // => 'test?'
 ```
 
 #### `getActualWidthOfChars(text: string, options?: object): number`
-通过 Canvas 获取字符串的实际像素宽度
+Get the actual pixel width of a string through Canvas
 
 ```javascript
-getActualWidthOfChars('性能数据') // => 48
+getActualWidthOfChars('Performance Data') // => 48
 ```
 
 #### `generateRandomColor(): string[]`
-生成随机颜色数组
+Generate random color array
 
 ```javascript
 generateRandomColor() // => ['rgb(48, 62, 6)', ...]
 ```
 
 #### `getRandomKey(): string`
-生成随机的唯一标识符
+Generate random unique identifier
 
 ```javascript
 getRandomKey() // => 'abc123def456'
 ```
 
-### 数字处理
+### Number Processing
 
 #### `toThousands(x: number, digits?: number): string`
-数字转换为千位分隔符形式
+Convert numbers to thousands separator format
 
 ```javascript
 toThousands(1234567.89) // => "1,234,567.89"
@@ -101,7 +101,7 @@ toThousands(1234567.89, 2) // => "1,234,567.89"
 ```
 
 #### `convertSpecialNumbers(num: number): number`
-特殊数字转换（NaN/Infinity => 0）
+Special number conversion (NaN/Infinity => 0)
 
 ```javascript
 convertSpecialNumbers(NaN) // => 0
@@ -109,7 +109,7 @@ convertSpecialNumbers(Infinity) // => 0
 ```
 
 #### `convertEmptyNumber(num: any): string | number`
-空数字转换，0 显示 0，null/undefined 显示 '--'
+Empty number conversion, 0 displays 0, null/undefined displays '--'
 
 ```javascript
 convertEmptyNumber(null) // => '--'
@@ -117,16 +117,16 @@ convertEmptyNumber(0) // => 0
 ```
 
 #### `bytesConverter(bytes: number, unit: string): number`
-字节单位转换
+Byte unit conversion
 
 ```javascript
 bytesConverter(4*1024*1024, 'MB') // => 4
 ```
 
-### 对象处理
+### Object Processing
 
 #### `encodeObject(obj: object): object`
-转义对象中的特殊字符
+Escape special characters in objects
 
 ```javascript
 encodeObject({cpu: 'intel i7', gpu: 'rtx 4090'}) 
@@ -134,7 +134,7 @@ encodeObject({cpu: 'intel i7', gpu: 'rtx 4090'})
 ```
 
 #### `decodeObject(obj: object): object`
-解码对象中的特殊字符
+Decode special characters in objects
 
 ```javascript
 decodeObject({cpu: 'intel%20i7', gpu: 'rtx%204090'}) 
@@ -142,30 +142,30 @@ decodeObject({cpu: 'intel%20i7', gpu: 'rtx%204090'})
 ```
 
 #### `escapeRegExpObject(obj: object): object`
-转义对象中含有正则特殊字符的值
+Escape values containing regex special characters in objects
 
 ```javascript
 escapeRegExpObject({a: '[lodash]'}) // => {a: '\\[lodash\\]'}
 ```
 
 #### `replaceKeys(obj: object | array, keysMap: object): object | array`
-修改对象/数组的键和值
+Modify keys and values of objects/arrays
 
 ```javascript
 replaceKeys({'a': 123}, {a: 'b'}) // => {b: 123}
 ```
 
-### 日期时间
+### Date & Time
 
 #### `checkAndCompleteDate(dateString: string): string`
-检查日期格式，没有时分秒则补充 23:59:59
+Check date format, add 23:59:59 if no time is present
 
 ```javascript
 checkAndCompleteDate('2020-01-01') // => '2020-01-01 23:59:59'
 ```
 
 #### `showDuration(options: object): string`
-计算并格式化时间范围
+Calculate and format time range
 
 ```javascript
 showDuration({
@@ -175,40 +175,40 @@ showDuration({
 ```
 
 #### `formatUUID(uuidStr: string): string`
-转换为带连字符的 UUID 字符串
+Convert to hyphenated UUID string
 
 ```javascript
 formatUUID('e4b9e0e0e0e0e0e0e0e0e0e0e0e0e0e0') 
 // => 'e4b9e0e0-e0e0-e0e0-e0e0-e0e0e0e0e0e0'
 ```
 
-### DOM 操作
+### DOM Operations
 
 #### `copyToClipboard(text: string): void`
-复制文字到剪贴板，支持 HTTP 请求
+Copy text to clipboard, supports HTTP requests
 
 ```javascript
 copyToClipboard('http://www.baidu.com')
 ```
 
 #### `scrollToAnchor(anchorName: string): void`
-跳转到指定锚点
+Jump to specified anchor
 
 ```javascript
 scrollToAnchor('section1')
 ```
 
-### URL 处理
+### URL Processing
 
 #### `getQueryString(name: string): string | null`
-获取 URL 参数值
+Get URL parameter value
 
 ```javascript
 getQueryString('id') // => 'xxx'
 ```
 
 #### `urlParamsToObject(url: string): object`
-将 URL 参数转换为对象
+Convert URL parameters to object
 
 ```javascript
 urlParamsToObject('https://www.baidu.com?a=1&b=2') 
@@ -216,65 +216,65 @@ urlParamsToObject('https://www.baidu.com?a=1&b=2')
 ```
 
 #### `objectToUrlParams(params: object): string`
-将对象转换为 URL 参数字符串
+Convert object to URL parameter string
 
 ```javascript
 objectToUrlParams({a: '1', b: '2'}) // => 'a=1&b=2'
 ```
 
-### 工具函数
+### Utility Functions
 
 #### `mixedSort(a: any, b: any): number`
-中英文数字混合排序（排序顺序：数字 > 字母 > 中文拼音）
+Mixed sorting for Chinese, English, and numbers (Sort order: numbers > letters > Chinese pinyin)
 
 ```javascript
 ['1', 'a', '中文'].sort(mixedSort) // => ['1', 'a', '中文']
 ```
 
-### Echarts 工具
+### Echarts Tools
 
 #### `largeDataTooltipOptimization(params: any, labelField: string, rowsPerColumn: number, defaultColumnWidth: number): string`
-Echarts Tooltip 的大量数据下 formatter 格式化
+Echarts Tooltip formatter optimization for large data
 
 ```javascript
-// 在 Echarts 配置中使用
+// Use in Echarts configuration
 tooltip: {
   formatter: (params) => largeDataTooltipOptimization(params, 'device', 10, 200)
 }
 ```
 
-## 🎨 Antd 相关工具
+## 🎨 Antd Related Tools
 
-> ⚠️ **注意**: 使用 antd-utils 时，需要在项目中安装 `react`、`react-dom`、`antd`，并从 `@qisexin/utils-tool/antd-utils` 内引入方法
+> ⚠️ **Note**: When using antd-utils, you need to install `react`, `react-dom`, `antd` in your project and import methods from `@qisexin/utils-tool/antd-utils`
 
-### CopyToClipboard 组件
-复制到剪贴板的 React 组件
+### CopyToClipboard Component
+React component for copying to clipboard
 
 ```tsx
 import { CopyToClipboard } from '@qisexin/utils-tool/antd-utils';
 
-<CopyToClipboard copyText={'复制内容'}>
-  点我复制
+<CopyToClipboard copyText={'Copy content'}>
+  Click to copy
 </CopyToClipboard>
 ```
 
 ### downloadXlsx
-前端下载 Excel 文件
+Frontend Excel file download
 
-详细使用方法请参考：[downloadXlsx 文档](src/antd-utils/downloadXlsx.md)
+For detailed usage, please refer to: [downloadXlsx Documentation](src/antd-utils/downloadXlsx.md)
 
 ### downloadXlsxPro
-前端下载 Excel 文件（支持定制样式）
+Frontend Excel file download (supports custom styling)
 
-详细使用方法请参考：[downloadXlsxPro 文档](src/antd-utils/downloadXlsxPro.md)
+For detailed usage, please refer to: [downloadXlsxPro Documentation](src/antd-utils/downloadXlsxPro.md)
 
 ### getColumnSearchProps
-为 Antd Table 添加本地搜索功能
+Add local search functionality to Antd Table
 
 ```tsx
 import { getColumnSearchProps } from '@qisexin/utils-tool/antd-utils';
 
-// 在 Antd Table columns 配置中使用
+// Use in Antd Table columns configuration
 const columns = [
   {
     title: 'Name',
@@ -286,10 +286,10 @@ const columns = [
 ];
 ```
 
-## 🪝 自定义 Hooks
+## 🪝 Custom Hooks
 
 ### useLocalStorageState
-将状态存储在 localStorage 中的 Hook，支持跨标签页通信
+Hook that stores state in localStorage, supports cross-tab communication
 
 ```tsx
 import { useLocalStorageState } from '@qisexin/utils-tool/hooks';
@@ -297,26 +297,26 @@ import { useLocalStorageState } from '@qisexin/utils-tool/hooks';
 const [value, setValue] = useLocalStorageState('key', 'defaultValue');
 ```
 
-## 🤝 贡献指南
+## 🤝 Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Issues and Pull Requests are welcome!
 
-1. Fork 本仓库
-2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交你的修改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 打开一个 Pull Request
+1. Fork this repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 许可证
+## 📄 License
 
-本项目基于 [MIT](LICENSE.txt) 许可证开源。
+This project is open source under the [MIT](LICENSE.txt) license.
 
-## 🔗 相关链接
+## 🔗 Related Links
 
-- [NPM 包地址](https://www.npmjs.com/package/@qisexin/utils-tool)
-- [GitHub 仓库](https://github.com/2218675712/qisexin-utils)
-- [问题反馈](https://github.com/2218675712/qisexin-utils/issues)
+- [NPM Package](https://www.npmjs.com/package/@qisexin/utils-tool)
+- [GitHub Repository](https://github.com/2218675712/qisexin-utils)
+- [Issue Tracker](https://github.com/2218675712/qisexin-utils/issues)
 
 ---
 
-如果这个工具库对你有帮助，请给个 ⭐️ 支持一下！
+If this utility library helps you, please give it a ⭐️ for support!
