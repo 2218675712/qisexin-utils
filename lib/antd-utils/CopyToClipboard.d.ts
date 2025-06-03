@@ -7,6 +7,6 @@ import type { ReactNode } from "react";
 declare const CopyToClipboard: (props: {
     copyText: string;
     children: ReactNode;
-    cssStyle?: object | undefined;
+    cssStyle?: object;
 }) => JSX.Element;
 export default CopyToClipboard;

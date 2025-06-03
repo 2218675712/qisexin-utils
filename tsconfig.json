@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5" /* 代码编译成es5，这样兼容性更好 */,
+    "target": "es2017" /* 支持现代JavaScript API，包括Object.entries */,
+    "lib": ["es2017", "dom"] /* 明确指定支持的库 */,
     "module": "es6" /* 表明我们的代码使用es6以后的格式写的 */,
     "declaration": true /* 我们要生成.d.ts那种类型提示文件 */,
     "moduleResolution":"node",
@@ -10,8 +11,8 @@
     "esModuleInterop": true /* 兼容esm和cjs两种导入规则，一定要设置为true */,
     "forceConsistentCasingInFileNames": true /* 禁止对同一个文件的不同引用，开着也行 */,
     "skipLibCheck": true, /* 不解析.d.ts类型文件 */
-    "suppressImplicitAnyIndexErrors": true, // 镇压任意隐式的索引错误
     "jsx": "react",// 支持jsx
+    "types": ["node"] /* 包含Node.js类型定义 */
   },
   "include": ["src"], /* 解析范围为src文件夹内 */
 }

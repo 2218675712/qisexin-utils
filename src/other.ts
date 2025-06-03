@@ -65,8 +65,8 @@ export const copyToClipboard = (text: string) => {
  * @param val 编码字符串
  * @example encodeValue('test?') => 'test%3F'
  */
-export const encodeValue = (val: string) => {
-    if (!val) return val;
+export const encodeValue = (val: any): any => {
+    if (!val || typeof val !== 'string') return val;
     return encodeURIComponent(val);
 };
 /**
@@ -74,9 +74,9 @@ export const encodeValue = (val: string) => {
  * @param val 解码字符串
  * @example decodeValue('test%3F') => 'test?'
  */
-export const decodeValue = (val: string) => {
+export const decodeValue = (val: any): any => {
     try {
-        if (!val) return val;
+        if (!val || typeof val !== 'string') return val;
         return decodeURIComponent(val);
     } catch (e) {
         return val;
@@ -87,14 +87,14 @@ export const decodeValue = (val: string) => {
  * @param obj
  * @example encodeObject({cpu: 'intel i7',gpu:'rtx 4090'}) => {cpu: 'intel%20i7',gpu:'rtx%204090'}
  */
-export const encodeObject = (obj: {}) => {
+export const encodeObject = (obj: Record<string, any>) => {
     if (!isObject(obj)) {
         return obj;
     }
     return Object.keys(obj).reduce((acc, key) => {
-        acc[key] = encodeValue(obj[key]);
+        acc[key] = encodeValue((obj as any)[key]);
         return acc;
-    }, {});
+    }, {} as Record<string, any>);
 };
 
 /**
@@ -102,28 +102,29 @@ export const encodeObject = (obj: {}) => {
  * @param obj
  * @example decodeObject({cpu: 'intel%20i7',gpu:'rtx%204090'}) => {cpu: 'intel i7',gpu:'rtx 4090'}
  */
-export const decodeObject = (obj: {}) => {
+export const decodeObject = (obj: Record<string, any>) => {
     if (!isObject(obj)) {
         return obj;
     }
     return Object.keys(obj).reduce((acc, key) => {
-        acc[key] = decodeValue(obj[key]);
+        acc[key] = decodeValue((obj as any)[key]);
         return acc;
-    }, {});
+    }, {} as Record<string, any>);
 };
 /**
  * 转义对象中含有正则中的特殊字符
  * @param obj
  * @example escapeRegExpObject({a:'[lodash]'}) => {a:'\[lodash\]'}
  */
-export const escapeRegExpObject = (obj: {}) => {
+export const escapeRegExpObject = (obj: Record<string, any>) => {
     if (!isObject(obj)) {
         return obj;
     }
     return Object.keys(obj).reduce((acc, key) => {
-        acc[key] = escapeRegExp(obj[key]);
+        const value = (obj as any)[key];
+        acc[key] = typeof value === 'string' ? escapeRegExp(value) : value;
         return acc;
-    }, {});
+    }, {} as Record<string, any>);
 };
 /**
  * 检查日期格式，没有时分秒补充 23:59:59

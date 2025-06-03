@@ -7,8 +7,8 @@ import { ConfigType } from "dayjs";
  * @example getActualWidthOfChars('性能数据')=>48
  */
 export declare const getActualWidthOfChars: (text: string, options?: {
-    size?: number | undefined;
-    family?: string | undefined;
+    size?: number;
+    family?: string;
 }) => number;
 /**
  * @description 生成随机颜色
@@ -33,31 +33,31 @@ export declare const copyToClipboard: (text: string) => void;
  * @param val 编码字符串
  * @example encodeValue('test?') => 'test%3F'
  */
-export declare const encodeValue: (val: string) => string;
+export declare const encodeValue: (val: any) => any;
 /**
  * 解码字符串
  * @param val 解码字符串
  * @example decodeValue('test%3F') => 'test?'
  */
-export declare const decodeValue: (val: string) => string;
+export declare const decodeValue: (val: any) => any;
 /**
  * 转义对象中的特殊字符 例: / => %2F
  * @param obj
  * @example encodeObject({cpu: 'intel i7',gpu:'rtx 4090'}) => {cpu: 'intel%20i7',gpu:'rtx%204090'}
  */
-export declare const encodeObject: (obj: {}) => {};
+export declare const encodeObject: (obj: Record<string, any>) => Record<string, any>;
 /**
  * 解码对象中的特殊字符
  * @param obj
  * @example decodeObject({cpu: 'intel%20i7',gpu:'rtx%204090'}) => {cpu: 'intel i7',gpu:'rtx 4090'}
  */
-export declare const decodeObject: (obj: {}) => {};
+export declare const decodeObject: (obj: Record<string, any>) => Record<string, any>;
 /**
  * 转义对象中含有正则中的特殊字符
  * @param obj
  * @example escapeRegExpObject({a:'[lodash]'}) => {a:'\[lodash\]'}
  */
-export declare const escapeRegExpObject: (obj: {}) => {};
+export declare const escapeRegExpObject: (obj: Record<string, any>) => Record<string, any>;
 /**
  * 检查日期格式，没有时分秒补充 23:59:59
  * @param dateString
