@@ -36,6 +36,7 @@ import { toThousands } from '@qisexin/utils-tool';
 - escapeRegExpObject 转义对象中含有正则中的特殊字符
 - checkAndCompleteDate 检查日期格式，没有时分秒补充 23:59:59
 - formatUUID 转换为带连字符的uuid字符串
+- showDuration 计算时间范围
 - scrollToAnchor 跳转锚点
 - mixedSort 中英文数字混合排序
 - convertSpecialNumbers 特殊数字转换(NaN/Infinity => 0)
@@ -148,6 +149,14 @@ import { toThousands } from '@qisexin/utils-tool';
  * @example formatUUID('e4b9e0e0e0e0e0e0e0e0e0e0e0e0e0e0') => 'e4b9e0e0-e0e0-e0e0-e0e0-e0e0e0e0e0e0'
  */
 ```
+### showDuration 计算时间范围
+```js
+/**
+ * 用于根据开始和结束时间智能显示时长，属于文本显示类方法，常用于显示某项任务的耗时
+ * @param options obj startTime 开始时间 endTime 结束时间 lang?: 'zh' | 'en'
+ * @example showDuration({startTime: '2022-06-14 12:00:00', endTime: '2022-06-14 15:30:47'}) => 3h30m47s
+ */
+```
 ### scrollToAnchor 跳转锚点
 ```js
 /**
@@ -243,7 +252,8 @@ import { toThousands } from '@qisexin/utils-tool';
 > ⚠️注意: 使用antd-utils时，需要在项目中安装 'react', 'react-dom', 'antd'并从@qisexin/utils-tool/antd-utils内引入方法
 
 - CopyToClipboard 复制到剪贴板
-- downloadXlsxPro 前端下载xlsx
+- downloadXlsx 前端下载xlsx
+- downloadXlsxPro 前端下载xlsx支持定制样式
 - getColumnSearchProps antd table 加入本地搜索
 ### CopyToClipboard 复制到剪贴板
 
@@ -251,7 +261,8 @@ import { toThousands } from '@qisexin/utils-tool';
 import { CopyToClipboard } from "'@qisexin/utils-tool/antd-utils";
 <CopyToClipboard copyText={'复制内容'}>点我复制</CopyToClipboard>
 ```
-### downloadXlsxPro 前端下载xlsx  [参考地址](src/antd-utils/downloadXlsxPro.md)
+### downloadXlsx 前端下载xlsx  [参考地址](src/antd-utils/downloadXlsx.md)
+### downloadXlsxPro 前端下载xlsx支持定制样式  [参考地址](src/antd-utils/downloadXlsxPro.md)
 ### getColumnSearchProps antd table 加入本地搜索
 ```tsx
 import { getColumnSearchProps } from '@qisexin/utils-tool/antd-utils';

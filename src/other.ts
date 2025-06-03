@@ -1,5 +1,6 @@
-import { escapeRegExp, isObject } from "lodash-es";
-import dayjs from 'dayjs'
+import { escapeRegExp, isObject, round } from "lodash-es";
+import dayjs, { ConfigType } from "dayjs";
+import duration from "dayjs/plugin/duration";
 
 /**
  * 通过canvas获取字符的实际宽度
@@ -144,6 +145,87 @@ export const checkAndCompleteDate = (dateString: string) => {
         return dateString
     }
 };
+
+export type ShowDurationOptions = {
+    /** 开始时间 */
+    startTime: ConfigType;
+    /** 结束时间 */
+    endTime: ConfigType;
+    /** 语言，默认为中文 */
+    lang?: "zh" | "en";
+};
+
+// 语言包
+const langMap = {
+    zh: {
+        d: "天",
+        h: "小时",
+        m: "分",
+        s: "秒",
+        ms: "毫秒",
+    },
+
+    en: {
+        d: "d",
+        h: "h",
+        m: "m",
+        s: "s",
+        ms: "ms",
+    },
+};
+
+/** 计算时间范围 */
+export const showDuration = (options: ShowDurationOptions) => {
+    const { startTime, endTime, lang } = options || {};
+
+    const langs = langMap[lang || "en"];
+
+    const secondsDuration = dayjs(endTime).diff(startTime) * 0.001;
+
+    if (secondsDuration < 0 || !startTime || !endTime || !langs) {
+        return "";
+    }
+
+    // 一秒以内
+    if (secondsDuration < 1) {
+        return `${round(secondsDuration * 1000)}${langs.ms}`;
+    }
+
+    // 一分钟内
+    if (secondsDuration < 60) {
+        return `${round(secondsDuration, 2)}${langs.s}`;
+    }
+
+    // 超出一分钟
+    const du = dayjs.duration(secondsDuration, "seconds");
+
+    const timeArr = [
+        {
+            val: du.days(),
+            label: langs.d,
+        },
+        {
+            val: du.hours(),
+            label: langs.h,
+        },
+        {
+            val: du.minutes(),
+            label: langs.m,
+        },
+        {
+            val: du.seconds(),
+            label: langs.s,
+        },
+    ];
+
+    return (
+        timeArr
+            .filter((item) => item.val)
+            .map((item) => `${item.val}${item.label}`)
+            .join("") || `0${langs.ms}`
+    );
+};
+
 /**
  * 转换为带连字符的uuid字符串
  * @param uuidStr uuid字符串

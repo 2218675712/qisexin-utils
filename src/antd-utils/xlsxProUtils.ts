@@ -28,9 +28,9 @@ export const convertCssToXlsxStyle = (css?: CellStyle) => {
 
   if (css?.fontWeight) {
     const isBold =
-      css?.fontWeight === "bold" ||
-      css?.fontWeight === "bolder" ||
-      Number(css?.fontWeight) >= 700;
+        css?.fontWeight === "bold" ||
+        css?.fontWeight === "bolder" ||
+        Number(css?.fontWeight) >= 700;
     merge(cellStyle, { font: { bold: isBold } });
   }
 
@@ -49,8 +49,8 @@ export const convertCssToXlsxStyle = (css?: CellStyle) => {
   }
 
   const borderColor = css?.borderColor
-    ? css?.borderColor?.replace("#", "")
-    : DEF_BORDER_COLOR;
+      ? css?.borderColor?.replace("#", "")
+      : DEF_BORDER_COLOR;
 
   merge(cellStyle, {
     border: {
@@ -102,9 +102,9 @@ export const getRenderedText = (value: React.ReactNode): any => {
  * @returns 单元格坐标
  */
 export const getCellCoordinate = (
-  rowIndex: number,
-  columnIndex: number,
-  headerRows: number
+    rowIndex: number,
+    columnIndex: number,
+    headerRows: number
 ): string => {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Excel 列索引字母
   let result = "";
@@ -138,9 +138,9 @@ export const getHeaderMerges = (headerData: Array<string>[]) => {
     while (j < headerData[i].length) {
       const start = j;
       while (
-        j < headerData[i].length - 1 &&
-        headerData[i][j] === headerData[i][j + 1]
-      ) {
+          j < headerData[i].length - 1 &&
+          headerData[i][j] === headerData[i][j + 1]
+          ) {
         j++;
       }
       const end = j;
@@ -160,9 +160,9 @@ export const getHeaderMerges = (headerData: Array<string>[]) => {
     while (i < headerData.length) {
       const start = i;
       while (
-        i < headerData.length - 1 &&
-        headerData[i][j] === headerData[i + 1][j]
-      ) {
+          i < headerData.length - 1 &&
+          headerData[i][j] === headerData[i + 1][j]
+          ) {
         i++;
       }
       const end = i;
@@ -220,7 +220,7 @@ export const generateHeader = (columns: CellColumnType[]) => {
     const list = [
       ...topValueList,
       getRenderedText(
-        typeof treeNode.title === "function" ? treeNode.title() : treeNode.title
+          typeof treeNode.title === "function" ? treeNode.title() : treeNode.title
       ),
     ];
 

@@ -20,54 +20,54 @@ import { downloadXlsxPro } from "testplus-fe-utils/downloadXlsxPro";
 import { CellColumnType } from "testplus-fe-utils/lib/xlsxProInterface";
 
 type ResultItem = {
-  name: string;
-  age: number;
-  gender: string;
+    name: string;
+    age: number;
+    gender: string;
 };
 
 // 这里演示了如何使用工具集的CellColumnType来规避typescript的语法检查
 // 如果需要严谨的语法提示，像antd/lib/table中的ColumnType那样传入一个泛型即可
 const columns: CellColumnType<ResultItem>[] = [
-  {
-    title: (
-      <div>
-        <span>姓名</span>
-        <Tooltip title="表示人的名字">
-          <QuestionCircleOutlined />
-        </Tooltip>
-      </div>
-    ),
-    dataIndex: "name",
-    key: "name",
-  },
-  { title: "年龄", dataIndex: "age", key: "age" },
-  {
-    title: "性别",
-    dataIndex: "gender",
-    key: "gender",
-    render: (val) => {
-      if (val === "male") {
-        return <Tag color="cyan">男</Tag>;
-      }
-      if (val === "female") {
-        return <Tag color="red">女</Tag>;
-      }
-      return "-";
+    {
+        title: (
+            <div>
+                <span>姓名</span>
+                <Tooltip title="表示人的名字">
+                    <QuestionCircleOutlined />
+                </Tooltip>
+            </div>
+        ),
+        dataIndex: "name",
+        key: "name",
     },
-  },
+    { title: "年龄", dataIndex: "age", key: "age" },
+    {
+        title: "性别",
+        dataIndex: "gender",
+        key: "gender",
+        render: (val) => {
+            if (val === "male") {
+                return <Tag color="cyan">男</Tag>;
+            }
+            if (val === "female") {
+                return <Tag color="red">女</Tag>;
+            }
+            return "-";
+        },
+    },
 ];
 
 const dataSource = [
-  { name: "张三", age: 24, gender: "male" },
-  { name: "燕子", age: 18, gender: "female" },
+    { name: "张三", age: 24, gender: "male" },
+    { name: "燕子", age: 18, gender: "female" },
 ];
 
 downloadXlsxPro({
-  fileName: "基本信息",
-  sheet: {
-    columns,
-    dataSource,
-  },
+    fileName: "基本信息",
+    sheet: {
+        columns,
+        dataSource,
+    },
 });
 ```
 
@@ -77,22 +77,22 @@ downloadXlsxPro({
 
 ```tsx
 const columns = [
-  {
-    title: "运动偏好",
-    // 当存在表头分组时，和antd一样，自身不需要dataIndex和key
-    children: [
-      {
-        title: "室内运动",
-        dataIndex: "indoor",
-        key: "indoor",
-      },
-      {
-        title: "室外运动",
-        dataIndex: "outdoor",
-        key: "outdoor",
-      },
-    ],
-  },
+    {
+        title: "运动偏好",
+        // 当存在表头分组时，和antd一样，自身不需要dataIndex和key
+        children: [
+            {
+                title: "室内运动",
+                dataIndex: "indoor",
+                key: "indoor",
+            },
+            {
+                title: "室外运动",
+                dataIndex: "outdoor",
+                key: "outdoor",
+            },
+        ],
+    },
 ];
 ```
 
@@ -100,18 +100,18 @@ const columns = [
 
 ```tsx
 downloadXlsxPro({
-  fileName: "基本信息",
-  sheet: {
-    columns,
-    dataSource,
-    // 在工作表中增加headerStyle，表头样式默认居中
-    headerStyle: {
-      color: "#ffffff",
-      fontSize: 18,
-      backgroundColor: "#1f78d1",
-      borderColor: "#000000",
+    fileName: "基本信息",
+    sheet: {
+        columns,
+        dataSource,
+        // 在工作表中增加headerStyle，表头样式默认居中
+        headerStyle: {
+            color: "#ffffff",
+            fontSize: 18,
+            backgroundColor: "#1f78d1",
+            borderColor: "#000000",
+        },
     },
-  },
 });
 ```
 
@@ -119,51 +119,51 @@ downloadXlsxPro({
 
 ```tsx
 Ïconst columns = [
-  {
-    title: (
-      <div>
-        <span>姓名</span>
-        <Tooltip title="表示人的名字">
-          <QuestionCircleOutlined />
-        </Tooltip>
-      </div>
-    ),
-    dataIndex: "name",
-    key: "name",
-    // 支持直接传入cellStyle对象
-    cellStyle: {
-      alignCenter: true,
+    {
+        title: (
+            <div>
+                <span>姓名</span>
+                <Tooltip title="表示人的名字">
+                    <QuestionCircleOutlined />
+                </Tooltip>
+            </div>
+        ),
+        dataIndex: "name",
+        key: "name",
+        // 支持直接传入cellStyle对象
+        cellStyle: {
+            alignCenter: true,
+        },
     },
-  },
-  {
-    title: "年龄",
-    dataIndex: "age",
-    key: "age",
-    // 支持传入cellStyleRender函数，入参与render函数一致
-    cellStyleRender: (val) =>
-      val < 20
-        ? { color: "#ff0000", alignCenter: true }
-        : { alignCenter: true },
-  },
-  {
-    title: "性别",
-    dataIndex: "gender",
-    key: "gender",
-    render: (val) => {
-      if (val === "male") {
-        return <Tag color="cyan">男</Tag>;
-      }
-      if (val === "female") {
-        return <Tag color="red">女</Tag>;
-      }
-      return "-";
+    {
+        title: "年龄",
+        dataIndex: "age",
+        key: "age",
+        // 支持传入cellStyleRender函数，入参与render函数一致
+        cellStyleRender: (val) =>
+            val < 20
+                ? { color: "#ff0000", alignCenter: true }
+                : { alignCenter: true },
     },
-    // 支持width宽度识别
-    width: 300,
-    cellStyle: {
-      alignCenter: true,
+    {
+        title: "性别",
+        dataIndex: "gender",
+        key: "gender",
+        render: (val) => {
+            if (val === "male") {
+                return <Tag color="cyan">男</Tag>;
+            }
+            if (val === "female") {
+                return <Tag color="red">女</Tag>;
+            }
+            return "-";
+        },
+        // 支持width宽度识别
+        width: 300,
+        cellStyle: {
+            alignCenter: true,
+        },
     },
-  },
 ];
 ```
 

@@ -16,8 +16,8 @@ export const downloadXlsxPro = (params: DownloadXlsxProType): void => {
     const { fileName, sheet } = params;
 
     const outputFileName = /(\.xlsx)$/.test(fileName)
-      ? fileName
-      : `${fileName}.xlsx`;
+        ? fileName
+        : `${fileName}.xlsx`;
 
     const workbook = utils.book_new();
 
@@ -39,16 +39,16 @@ export const downloadXlsxPro = (params: DownloadXlsxProType): void => {
           if (column.render) {
             // 如果列定义了 render 属性，则使用 render 函数的返回值作为单元格的值
             const renderedValue = column.render(
-              record[column.dataIndex!],
-              record,
-              rowIndex
+                record[column.dataIndex!],
+                record,
+                rowIndex
             );
             const value = getRenderedText(renderedValue);
             row.push(value);
           } else {
             const value = isNil(record[column.dataIndex!])
-              ? ""
-              : record[column.dataIndex!];
+                ? ""
+                : record[column.dataIndex!];
             row.push(value);
           }
         });
@@ -90,9 +90,9 @@ export const downloadXlsxPro = (params: DownloadXlsxProType): void => {
 
       for (let c = range.s.c; c <= range.e.c; c++) {
         for (
-          let headerIndex = 0;
-          headerIndex < headerData.length;
-          headerIndex += 1
+            let headerIndex = 0;
+            headerIndex < headerData.length;
+            headerIndex += 1
         ) {
           const cell = utils.encode_cell({ r: headerIndex, c: c });
           worksheet[cell].s = convertCssToXlsxStyle(mergedHeaderStyle);
@@ -111,20 +111,20 @@ export const downloadXlsxPro = (params: DownloadXlsxProType): void => {
           // 优先级：传函数 > 直接传对象
           if (column.cellStyleRender) {
             merge(
-              cellStyle,
-              column.cellStyleRender?.(
-                record[column.dataIndex!],
-                record,
-                rowIndex
-              )
+                cellStyle,
+                column.cellStyleRender?.(
+                    record[column.dataIndex!],
+                    record,
+                    rowIndex
+                )
             );
           }
 
           if (!isEmpty(cellStyle)) {
             const coordinate = getCellCoordinate(
-              rowIndex,
-              columnIndex,
-              headerData.length
+                rowIndex,
+                columnIndex,
+                headerData.length
             );
             worksheet[coordinate].s = convertCssToXlsxStyle(cellStyle);
           }
@@ -133,12 +133,12 @@ export const downloadXlsxPro = (params: DownloadXlsxProType): void => {
 
       // 将工作表添加到工作簿中
       utils.book_append_sheet(
-        workbook,
-        worksheet,
-        truncate(sheetName, {
-          length: 31,
-          omission: "",
-        })
+          workbook,
+          worksheet,
+          truncate(sheetName, {
+            length: 31,
+            omission: "",
+          })
       );
     };
 
