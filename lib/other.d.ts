@@ -1,3 +1,4 @@
+import { ConfigType } from "dayjs";
 /**
  * 通过canvas获取字符的实际宽度
  * @param text 传入的字符串
@@ -63,6 +64,16 @@ export declare const escapeRegExpObject: (obj: {}) => {};
  * @example checkAndCompleteDate('2020-01-01') => '2020-01-01 23:59:59'
  */
 export declare const checkAndCompleteDate: (dateString: string) => string;
+export type ShowDurationOptions = {
+    /** 开始时间 */
+    startTime: ConfigType;
+    /** 结束时间 */
+    endTime: ConfigType;
+    /** 语言，默认为中文 */
+    lang?: "zh" | "en";
+};
+/** 计算时间范围 */
+export declare const showDuration: (options: ShowDurationOptions) => string;
 /**
  * 转换为带连字符的uuid字符串
  * @param uuidStr uuid字符串
