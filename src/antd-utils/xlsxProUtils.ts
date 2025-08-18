@@ -1,6 +1,8 @@
 // downloadXlsxPro的各种方法集合
 
-import { isNil, last, merge } from "lodash-es";
+import { isNil } from "es-toolkit/predicate";
+import { last } from "es-toolkit/array";
+import { merge } from "es-toolkit/object";
 import React from "react";
 import { CellColumnType, CellStyle } from "./xlsxProInterface";
 

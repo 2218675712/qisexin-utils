@@ -1,4 +1,4 @@
-import { max } from "lodash-es";
+import { max } from "es-toolkit/compat";
 import { getActualWidthOfChars } from "./other";
 import { toThousands } from "./formatNumber";
 

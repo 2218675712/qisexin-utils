@@ -1,4 +1,6 @@
-import { isEmpty, isNil, merge, truncate } from "lodash-es";
+import { isEmpty, truncate } from "es-toolkit/compat";
+import { isNil } from "es-toolkit/predicate";
+import { merge } from "es-toolkit/object";
 import { utils, writeFile } from "xlsx-js-style";
 import { DownloadXlsxProType, XlsxProSheetOptions } from "./xlsxProInterface";
 import {

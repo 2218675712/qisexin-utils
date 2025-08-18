@@ -1,5 +1,5 @@
 // 数字转换为千位分隔符形式
-import { isNil } from "lodash-es";
+import { isNil } from "es-toolkit/predicate";
 
 /**
  * 数字转换为千位分隔符形式

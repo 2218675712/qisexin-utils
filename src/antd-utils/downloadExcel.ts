@@ -1,5 +1,7 @@
 import { utils, writeFile } from "xlsx";
-import { keyBy, mapValues, pick, truncate } from "lodash-es";
+import { keyBy } from "es-toolkit/array";
+import { mapValues, pick } from "es-toolkit/object";
+import { truncate } from "es-toolkit/compat";
 
 export type BaseSheetOptions = {
   /** 头部 */
@@ -47,7 +49,7 @@ const downloadXlsx = (params: DownloadXlsxType): void => {
 
       const header = columns.map((column) => column.dataIndex);
 
-      const insert = mapValues(keyBy(columns, "dataIndex"), "title");
+      const insert = mapValues(keyBy(columns, (c) => c.dataIndex), (v) => v.title);
 
       const rows = [
         insert,
@@ -96,7 +98,7 @@ const downloadCsv = (params: DownloadCsvType): void => {
 
     const header = columns.map((column) => column.dataIndex);
 
-    const insert = mapValues(keyBy(columns, "dataIndex"), "title");
+    const insert = mapValues(keyBy(columns, (c) => c.dataIndex), (v) => v.title);
 
     const rows = [insert, ...dataSource?.map((record) => pick(record, header))];
 

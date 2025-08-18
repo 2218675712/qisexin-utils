@@ -1,4 +1,6 @@
-import { escapeRegExp, isObject, round } from "lodash-es";
+import { escapeRegExp } from "es-toolkit/string";
+import { isObject } from "es-toolkit/compat";
+import { round } from "es-toolkit/math";
 import dayjs, { ConfigType } from "dayjs";
 import duration from "dayjs/plugin/duration";
 
